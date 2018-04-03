@@ -1,0 +1,277 @@
+<style type="text/css">
+#freechan {
+    border: 4px solid #222;
+    width: 850px;
+    height: 550px;
+    background: #003cd5;
+    padding: 2em;
+    font-size: .7em;
+    line-height: 1.2em;
+}
+#freechan a {
+    color: #fcffad;
+}
+#freechan-top {
+    margin-bottom: 1em;
+    text-shadow: 2px 2px #3d00ff;
+}
+    #freechan-title {
+        margin-bottom: 2em;
+        color: #fcffad;
+    }
+    #freechan-title h1, #freechan-title h2 {
+        margin: 0;
+        padding:0;
+    }
+    #freechan-title h1 {
+        font-size: 1.1em;
+    }
+    #freechan-title h2 {
+        font-size: .6em;
+    }
+    .fc-board-announcement {
+        font-size: 1.2em;
+        text-align: center;
+        color: #ccc;
+    }
+
+#freechan .thread {
+    padding: 2em 0 1em 0;
+    border-bottom: 3px dashed #bfccd3;
+}
+#freechan .thread a {
+    color: #3d00ff;
+}
+#freechan .thread .op, #freechan .thread .reply {
+    border: 4px solid #222;
+    padding: 1em 2em;
+    margin-bottom: 1em;
+    background: #bfccd3;
+}
+
+#freechan .thread .reply {
+    margin-left: 2em;
+}
+#freechan .thread .post-head {
+    margin-bottom: 1em;
+    font-size: .8em;
+}
+#freechan .thread .post-wrapper {
+    overflow: auto;
+}
+#freechan .thread .post-wrapper .post-image {
+    float: left;
+}
+#freechan .thread .post-content {
+    border: 2px solid #a5a5a5;
+    padding: 1em 2em;
+}
+#freechan .thread .with-image {
+    margin-left: 170px;
+}
+#freechan .thread .quote {
+    color: #007e28;
+}
+#freechan .thread .subject {
+    color: #ac1569;
+    font-weight: bold;
+}
+.fc-foot {
+    font-size: .8em;
+    text-align: center;
+    padding: 2em 0;
+}
+</style>
+
+<script>
+$(document).ready(function() {
+
+$("#freechan .load-sound").prop("volume", 0.2).trigger("play");
+
+});
+</script>
+
+
+<div id="freechan" class="scroll">
+
+    <audio class="load-sound">
+        <source src="https://a.pomf.space/sxzkwsvhdsrf.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="freechan-top">
+        <div id="freechan-title">
+            <h1>freeChannel</h1>
+            <h2>An anonymous board - only on the freeNet</h2>
+        </div>
+        <div class="fc-board-announcement">
+            Celebrating 9 years of SolarNet <a href="archive.html" rel="modal:open">comedy</a>!
+        </div>
+
+    </section>
+
+    <section class="thread">
+
+        <article class="op">
+            <div class="post-head">
+                Subject: <span class="subject">Jupetian Moon Anons</span> - Posted by Anonymous
+            </div>
+            <div class="post-wrapper">
+                <div class="post-image">
+                    <img src="freechannel/ganymede.gif" alt="Ganymede" title="Ganymede" />
+                </div>
+                <div class="post-content with-image">This is a thread for Anons who live on Jupiter's moons. Do you live by yourself or in a colony? What's the coolest thing about your moon? I'm from Ganymede, by the way.</div>
+                </div>
+        </article>
+
+        <article class="reply">
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">I also live on Ganymede. Best moon, best colony, best people. Anyone is free to disagree, but you'd be wrong.</div>
+        </article>
+
+        <article class="reply"><a name="1"></a>
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">I live in a colony on Europa. Very traditional and religious farmers. We've got pretty advanced astropodding and make money selling preserves to other moons. We're only about 16 years old I think its a cool place. Also we have some native subterranian sea life.</div>
+        </article>
+
+        <article class="reply"><a name="2"></a>
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content"><a href="#1">>>X</a><br/>Mining town on Callisto here. You guys make great stuff. I hope the Solar Union doesn't shut your religion down. I gotta have that tomato sauce.</div>
+        </article>
+
+        <article class="reply">
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-wrapper">
+                <div class="post-image">
+                    <img src="freechannel/space-tomato.gif"/>
+                </div>
+                 <div class="post-content with-image"><a href="#2">>>X</a><br/>We're always concerned about some sort of violent altercation with the Solar Union. The good thing is we're well-known and if they try anything they wouldn't be able to cover it up.</div>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="thread">
+
+        <article class="op"><a name="42110"></a>
+            <div class="post-head">
+                Posted by Anonymous
+            </div>
+            <div class="post-wrapper">
+                <div class="post-image">
+                    <img src="freechannel/bugs.gif"/>
+                </div>
+                <div class="post-content with-image">So some guy put a lone relay station with a server on Charon. It maps home through freelays with a six hour delay to Earth with minimal packet loss. He only allows one connection per address and only transmits ONE FRAME of looney tunes cartoons at a time. He has the entire library.</div>
+            </div>
+        </article>
+
+        <article class="reply"><a name="42125"></a>
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">Plutons are fucking weird.</div>
+        </article>
+
+    </section>
+
+    <section class="thread">
+
+        <article class="op">
+            <div class="post-head">
+               Subject: <span class="subject">Official nina thread</span> - Posted by Anonymous
+            </div>
+            <div class="post-wrapper">
+                <div class="post-image">
+                    <img src="freechannel/nina-heart.png"/>
+                </div>
+                <div class="post-content with-image">
+                    Who is nina?<br/>
+                    <span class="quote">
+                    >the Goddess of the outer solar system<br/>
+                    >she hacked a Solar Union media center and stole data that confirms Keplarians are not real<br/>
+                    >she has been on the run hopping from moon to moon<br/>
+                    >she only communicates through broadcasts that you can only decrypt with quickReader5
+                    </span><br/><br/>
+
+                    What else do we know?<br/>
+                    <span class="quote">
+                    >basically nothing, except she is perfect in every way<br/>
+                    >she eats ramen<br/>
+                    >we are her Listener-tachi
+                    </span><br/><br/>
+
+                    Where is nina now?<br/>
+                    <span class="quote">
+                    >we will never know<br/>
+                    >her current light hour delay from Earth is a little over 1, leading some anon's to think she's on a Saturnian moon, but she could be modifying the delay time on purpose to throw the SU off her scent.
+                    </span>
+
+                </div>
+            </div>
+        </article>
+
+        <article class="reply">
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">Why does my future wife have to be so elusive?</div>
+        </article>
+
+        <article class="reply"><a name="3"></a>
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">Hey nina lovers. Looks like we're a cult now, according to the SolarNet. </div>
+        </article>
+
+        <article class="reply">
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content"><a href="#3">>>X</a><br/>They aren't wrong.</div>
+        </article>
+
+        <article class="reply">
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">nina demands vegetables!</div>
+        </article>
+
+        <article class="reply">
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">I want to be nina's space cowboy and rescue her from the evil solar empire.</div>
+        </article>
+
+    </section>
+
+    <section class="thread">
+
+        <article class="op">
+            <div class="post-head">
+                Posted by Anonymous
+            </div>
+            <div class="post-content">I'm a high schooler from Earth and my councellor is pushing me to get optical implants. I just want to live a simple life as an adult and have kids some day. I don't want ad companies monitoring what I see. What can I do?</div>
+        </article>
+
+        <article class="reply">
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">Nothing. Just keep putting it off. If anyone asks, say you're busy with school work. As soon as you're 18, jump off the hell planet and join a moon colony before its too late. </div>
+        </article>
+
+    </section>
+
+    <section class="thread">
+
+        <article class="op">
+            <div class="post-head">
+                Posted by Anonymous
+            </div>
+            <div class="post-wrapper">
+                <div class="post-image">
+                    <img src="freechannel/crt.gif"/>
+                </div>
+                <div class="post-content with-image" >I'm trying to get off the SolarNet. So far I've got some cheap dumb hardware and light CRT. What software should I use?</div>
+            </div>
+        </article>
+
+        <article class="reply">
+            <div class="post-head">Anonymous reply:</div>
+            <div class="post-content">NyjaOS is a good place to start since it only comes with free programs. You can use their BIOS too. </div>
+        </article>
+
+    </section>
+
+    <div class="fc-foot">
+        Time stamps are currently hidden due to SU creepers.
+    </div>
+</div>

@@ -1,0 +1,225 @@
+
+<style type="text/css">
+/*animations*/
+@keyframes blink {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+
+/*general*/
+#connection {
+    background: #000;
+    width: 651px;
+    height: 600px;
+    text-shadow: 1px 1px #970043;
+    font-size: .7em;
+}
+#connection .info {
+    padding: 1em;
+}
+#connection, #connection-table {
+    color: #cecece;
+}
+#connection-map {
+    position: relative;
+    width: 641px;
+    height: 305px;
+    margin: 0 auto;
+    background: url("network-map/solarsystem.png") top left no-repeat;
+}
+#connection-map .connection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 2px solid #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+    background: yellow;
+    box-shadow: 1px 1px #fff;
+    animation: blink .7s infinite;
+}
+#connection-map .mercury {
+    top: 210px;
+    left: 90px;
+}
+#connection-map .venus {
+    top: 185px;
+    left: 150px;
+}
+#connection-map .earth {
+    top: 155px;
+    left: 200px;
+}
+#connection-map .mars {
+    top: 125px;
+    left: 240px;
+}
+#connection-map .jupiter {
+    top: 130px;
+    left: 350px;
+}
+#connection-map .saturn {
+    top: 85px;
+    left: 440px;
+}
+#connection-map .uranus {
+    top: 50px;
+    left: 510px;
+}
+#connection-map .neptune {
+    top: 15px;
+    left: 570px;
+}
+#connection-map .pluto {
+    top: 5px;
+    left: 615px;
+}
+#connection-table {
+    width: 100%;
+}
+#connection-table tr th {
+    text-align: right;
+}
+#connection-table tr th, #connection-table tr td {
+    padding: 2px;
+    border: 1px solid #222;
+}
+#connection .load-sound {
+    none;
+}
+</style>
+
+
+<script>
+$(document).ready(function() {
+
+var nyjaConnect = {}
+
+
+//data containing the distance of each region from earth in kilometers
+nyjaConnect.regions = [
+    {region : "mercury", distance : 91691000},
+    {region : "venus", distance : 41400000},
+    {region : "earth", distance : 0},
+    {region : "mars", distance : 78340000},
+    {region : "jupiter", distance : 628730000},
+    {region : "saturn", distance : 1275000000},
+    {region : "uranus", distance : 2723950000},
+    {region : "neptune", distance : 4351400000},
+    {region : "pluto", distance : 6000000000}
+];
+
+//calculate latency
+nyjaConnect.latency = function(kilo) {
+    var result = 0;
+    var minutes = 0;
+    var hours = 0;
+    var distance = kilo;
+    var seconds = distance/300000; //dividey kilometers by 300,000 (the amount of kilometers light travels in 1 second);
+
+    //convert to time format
+    minutes = Math.floor((seconds % (60 * 60)) / 60); //calculate minutes
+    if(minutes < 10) {//add a zero before the minute value if it is less than 10
+        minutes = "0" + minutes;
+    }
+    hours = Math.floor(seconds / (60 * 60)); //calculate hours      
+    result = [hours, minutes];
+    return result;
+}
+
+//color value for latency
+nyjaConnect.latencyColor = function(latency) {
+    var l = latency;
+    if(l[0] < 1 && l[1] < 5 ) {//if less than 5 minutes its good
+        return "#197069";
+    } else if(l[0] < 1 && l[1] <= 10) {//else if under an hour and less than 10 minutes its fair
+        return "#437035";
+    } else if(l[0] < 1) {//else if under an hour its okay {
+        return "#313596";
+    } else if(l[0] >= 1) {//else if an hour or more its poor
+        return "#2e1a3a";
+    }
+}
+
+//loop through and add the latency values to the table
+$("#connection-table tr").each( function(i, val){//loop through each table row
+    if(i > 0) {//ignore the first row
+        var regionIndex = i - 1; //since we are not doing anything with the first row we minus 1 from index to match the data
+        var cell = $(val).find("td.latency");//find the latency cell in the table row
+        var beacon = $("#connection-map").find("." + nyjaConnect.regions[regionIndex].region); //find the matching blinking beacon
+        var latency = nyjaConnect.latency(nyjaConnect.regions[regionIndex].distance); //calculate latency
+        var bgColor = nyjaConnect.latencyColor(latency)
+        
+        
+        cell.text(latency[0] + ":" + latency[1]); //change the html for the latency table cell
+        cell.css("background-color", bgColor); //change the color of the cell based on latency
+        beacon.css("background-color", bgColor); //change color of beacon
+    }
+});
+
+$("#connection .load-sound").prop("volume", 0.4).trigger("play");
+
+});
+
+</script>
+
+
+
+<div id="connection" class="scroll">
+    
+    <audio class="load-sound">
+        <source src="https://a.pomf.space/azapxhkynfng.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="connection-map">
+        <div class="connection mercury" alt="connections available" title="connections available"></div>
+        <div class="connection venus" alt="connections available" title="connections available"></div>
+        <div class="connection earth" alt="connections available" title="connections available"></div>
+        <div class="connection mars" alt="connections available" title="connections available"></div>
+        <div class="connection jupiter" alt="connections available" title="connections available"></div>
+        <div class="connection saturn" alt="connections available" title="connections available"></div>
+        <div class="connection uranus" alt="connections available" title="connections available"></div>
+        <div class="connection neptune" alt="connections available" title="connections available"></div>
+        <div class="connection pluto" alt="connections available" title="connections available"></div>
+    </div>
+    <div class="info">
+        <h3>Intra-solar Network Status</h3>
+        <table border="0" cellspacing="1" id="connection-table">
+            <tr>
+                <th>Solar Region</th><th>Apprx. Latency (LH)</th><th>Apprx Avail. Connections</th><th>Notes</th>
+            </tr>
+            <tr class="mercury">
+                <th>*Mercury</th><td class="latency"></td><td><1000</td><td>high signal degradation</td>
+            </tr>
+            <tr class="venus">
+                <th>*Venus</th><td class="latency"></td><td>2,573</td><td>high fidelity connection</td>
+            </tr>
+            <tr class="earth">
+                <th>Earth</th><td class="latency">Current Region</td><td>>10,000</td><td>high fidelity connection</td>
+            </tr>
+            <tr class="mars">
+                <th>Mars</th><td class="latency">00:04</td><td>>10,000</td><td>high fidelity connection</td>
+            </tr>
+            <tr class="jupiter">
+                <th>Jupiter</th><td class="latency">00:34</td><td>8,632</td><td></td>
+            </tr>
+            <tr class="saturn">
+                <th>Saturn</th><td class="latency">01:10</td><td>6,143</td><td></td>
+            </tr>
+            <tr class="uranus">
+                <th>Uranus</th><td class="latency"></td><td>4,005</td><td></td>
+            </tr>
+            <tr class="neptune">
+                <th>Neptune</th><td class="latency"></td><td>1,074</td><td></td>
+            </tr>
+            <tr class="pluto">
+                <th>Pluto</th><td class="latency"></td><td><1000</td><td></td>
+            </tr>
+        </table><br/><br/>
+        All latencies are approximations based on planetary distance. In the case of regions in the outer solar system, actual latency may differ depending on which moon you inhabit. <br/><br/>
+        Not enough connections? Launch a free relay station and help the freeNet! We are working on connection fidelity for regions beyond Pluto. If you are a exo planet explorer, please contact us.<br/><br/>
+        * = Mercury and Venus primarily assist communication between other regions, and offer very few native services. If you are mapping home through opposition, Venus tends to have less signal degradation.<br/><br/>
+    </div>
+
+</div>
